@@ -1,0 +1,42 @@
+.about {
+  padding: 80px 104px;
+  display: flex;
+  gap: 56px;
+  align-items: start;
+}
+
+.about__img {
+  max-width: 464px;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-image: url("../../assets/me_09042024.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.about__heading {
+  margin: 51px 0 24px;
+  font-family: "Roboto Slab", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1.15;
+  color: #1a1b22;
+}
+
+.about__body {
+  max-width: 600px;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.33;
+  color: #1a1b22;
+}
+
+.about__list-item {
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.33;
+  color: #1a1b22;
+}
