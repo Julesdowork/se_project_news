@@ -1,0 +1,34 @@
+.main {
+  padding: 80px 104px;
+  display: flex;
+  flex-direction: column;
+  background-color: gray;
+}
+
+.main__heading {
+  margin: 0;
+  font-family: "Roboto Slab", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1.15;
+  color: #1a1b22;
+}
+
+.main__btn {
+  background-color: #fff;
+  border: none;
+  border-radius: 80px;
+  color: #1a1b22;
+  max-width: 288px;
+  width: 100%;
+  padding: 20px 0;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.33;
+  align-self: center;
+}
+
+.main__btn:hover {
+  background-color: #e8e8e8;
+}
