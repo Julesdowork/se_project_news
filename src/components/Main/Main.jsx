@@ -1,5 +1,6 @@
 import "./Main.css";
 import NewsCardList from "../NewsCardList/NewsCardList";
+import Preloader from "../Preloader";
 
 function Main() {
   return (
@@ -9,6 +10,7 @@ function Main() {
       <button type="button" className="main__btn">
         Show more
       </button>
+      <Preloader />
     </main>
   );
 }

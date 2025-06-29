@@ -6,6 +6,9 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import About from "../About/About";
 import Footer from "../Footer/Footer";
+import RegisterModal from "../RegisterModal/RegisterModal";
+import LoginModal from "../LoginModal/LoginModal";
+import RegistrationSuccessModal from "../RegistrationSuccessModal/RegistrationSuccessModal";
 
 function App() {
   return (
@@ -16,6 +19,9 @@ function App() {
         <About />
         <Footer />
       </div>
+      <RegisterModal />
+      <LoginModal />
+      <RegistrationSuccessModal />
     </div>
   );
 }
