@@ -1,17 +1,23 @@
 import "./Main.css";
+import Header from "../Header/Header";
 import NewsCardList from "../NewsCardList/NewsCardList";
 import Preloader from "../Preloader";
+import About from "../About/About";
 
 function Main() {
   return (
-    <main className="main">
-      <h2 className="main__heading">Search results</h2>
-      <NewsCardList />
-      <button type="button" className="main__btn">
-        Show more
-      </button>
-      <Preloader />
-    </main>
+    <div className="page__content">
+      <Header />
+      <main className="main">
+        <h2 className="main__heading">Search results</h2>
+        <NewsCardList />
+        <button type="button" className="main__btn">
+          Show more
+        </button>
+        <Preloader />
+      </main>
+      <About />
+    </div>
   );
 }
 

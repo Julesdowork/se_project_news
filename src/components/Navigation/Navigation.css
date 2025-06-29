@@ -6,6 +6,10 @@
   border-bottom: 1px solid #c4c4c4;
 }
 
+.nav_white-bg {
+  box-shadow: 0 -1px 0 #D1D2D6;
+}
+
 .nav__title {
   margin: 30px 0 26px;
   font-family: "Roboto Slab", Arial, Helvetica, sans-serif;
@@ -13,6 +17,10 @@
   font-size: 20px;
   line-height: 1.2;
   color: #fff;
+}
+
+.nav__title_black {
+  color: #1a1b22;
 }
 
 .nav__btn-group {
@@ -32,9 +40,29 @@
   color: #b6bcbf;
 }
 
+.nav__btn {
+  background-color: transparent;
+  border: 0;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.33;
+  padding: 30px 26px;
+  color: #b6bcbf;
+}
+
 .nav__btn_active {
   border-bottom: 3px solid #fff;
   color: #fff;
+}
+
+.nav__btn_active-black {
+  border-bottom: 3px solid #1a1b22;
+  color: #fff;
+}
+
+.nav__btn_black {
+  color: #1a1b22;
 }
 
 .nav__btn_disabled {
@@ -46,4 +74,17 @@
   border-radius: 100px;
   color: #fff;
   padding: 13px 60px;
+}
+
+.nav__btn_signin-black {
+  border: 1px solid #1a1b22;
+  color: #1a1b22;
+}
+
+.nav_text_black {
+  color: #1a1b22;
+}
+
+.nav_border_black {
+  border-color: #1a1b22;
 }
