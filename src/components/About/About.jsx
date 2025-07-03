@@ -1,9 +1,15 @@
 import "./About.css";
 
+import profilePic from "../../assets/me_09042024.jpg";
+
 function About() {
   return (
     <div className="about">
-      <div className="about__img"></div>
+      <img
+        src={profilePic}
+        className="about__img"
+        alt="A picture of the author, Julian McNeill"
+      />
       <section className="about__bio">
         <h2 className="about__heading">About the author</h2>
         <p className="about__body">

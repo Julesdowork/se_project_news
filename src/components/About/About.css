@@ -10,9 +10,6 @@
   width: 100%;
   aspect-ratio: 1;
   border-radius: 50%;
-  background-image: url("../../assets/me_09042024.jpg");
-  background-size: cover;
-  background-position: center;
 }
 
 .about__heading {
@@ -39,4 +36,37 @@
   font-size: 18px;
   line-height: 1.33;
   color: #1a1b22;
+}
+
+@media screen and (min-width: 600px) and (max-width: 960px) {
+  .about {
+    padding: 40px;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .about__img {
+    max-width: 232px;
+  }
+
+  .about__heading {
+    font-size: 30px;
+    line-height: 1.33;
+    margin: 0 0 16px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .about {
+    padding: 32px 16px;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .about__heading {
+    margin: 0 0 16px;
+    font-size: 30px;
+    line-height: 1.33;
+  }
 }

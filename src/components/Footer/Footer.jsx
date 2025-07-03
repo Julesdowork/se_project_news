@@ -1,4 +1,6 @@
 import "./Footer.css";
+import github from "../../assets/github.svg";
+import linkedIn from "../../assets/linkedin.svg";
 
 function Footer() {
   return (
@@ -7,38 +9,50 @@ function Footer() {
         &copy; 2025 Supersite, Powered by News API
       </p>
       <ul className="footer__links">
-        <li className="footer__list-item">
-          <a href="#" className="footer__link">
-            Home
-          </a>
-        </li>
-        <li className="footer__list-item">
-          <a
-            href="https://tripleten.com/"
-            className="footer__link"
-            target="_blank"
-          >
-            TripleTen
-          </a>
-        </li>
-        <li className="footer__list-item">
-          <a
-            href="https://github.com/Julesdowork"
-            className="footer__link"
-            target="_blank"
-          >
-            Github
-          </a>
-        </li>
-        <li className="footer__list-item">
-          <a
-            href="https://www.linkedin.com/in/julian-mcneill/"
-            className="footer__link"
-            target="_blank"
-          >
-            LinkedIn
-          </a>
-        </li>
+        <div className="footer__links_group_text">
+          <li className="footer__list-item">
+            <a href="#" className="footer__link">
+              Home
+            </a>
+          </li>
+          <li className="footer__list-item">
+            <a
+              href="https://tripleten.com/"
+              className="footer__link"
+              target="_blank"
+            >
+              TripleTen
+            </a>
+          </li>
+        </div>
+        <div className="footer__links_group_icons">
+          <li className="footer__list-item">
+            <a
+              href="https://github.com/Julesdowork"
+              className="footer__link footer__link_logo_github"
+              target="_blank"
+            >
+              <img
+                src={github}
+                className="footer__link-img"
+                alt="GitHub logo"
+              />
+            </a>
+          </li>
+          <li className="footer__list-item">
+            <a
+              href="https://www.linkedin.com/in/julian-mcneill/"
+              className="footer__link"
+              target="_blank"
+            >
+              <img
+                src={linkedIn}
+                className="footer__link-img"
+                alt="LinkedIn logo"
+              />
+            </a>
+          </li>
+        </div>
       </ul>
     </footer>
   );

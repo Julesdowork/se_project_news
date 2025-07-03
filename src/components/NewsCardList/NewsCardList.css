@@ -6,3 +6,18 @@
   grid-template-columns: repeat(3, auto);
   gap: 16px;
 }
+
+@media screen and (min-width: 600px) and (max-width: 960px) {
+  .news-card-list {
+    gap: 8px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .news-card-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 0 16px;
+  }
+}

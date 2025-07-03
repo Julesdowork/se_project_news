@@ -1,12 +1,15 @@
 import "./NewsCard.css";
 
+import bookmarkIcon from "../../assets/bookmark.svg";
+
 function NewsCard() {
   return (
     <li className="news-card">
       <a href="#" className="news-card__link">
         <div className="news-card__img"></div>
-        {/* <div className="news-card__tooltip">Sign in to save articles</div> */}
-        <button type="button" className="news-card__save-btn"></button>
+        <button type="button" className="news-card__save-btn">
+          <img src={bookmarkIcon} className="news-card__save-icon" alt="Click here to save this article" />
+        </button>
         <div className="news-card__info">
           <p className="news-card__date">November 4, 2020</p>
           <h3 className="news-card__title">
