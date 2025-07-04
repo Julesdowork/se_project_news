@@ -4,10 +4,13 @@ import HeaderControlsContext from "../../contexts/HeaderControlsContext";
 import menuIcon from "../../assets/bars.svg";
 import closeIcon from "../../assets/xmark.svg";
 
-function Navigation({ isSavedNews, onSignUpButtonClicked }) {
-  const { isMobileMenuOpen, handleMobileMenuButton } = useContext(
-    HeaderControlsContext
-  );
+function Navigation({ isSavedNews }) {
+  const {
+    isMobileMenuOpen,
+    isModalOpen,
+    handleMobileMenuButton,
+    handleSignInButton,
+  } = useContext(HeaderControlsContext);
 
   return (
     <nav className={`nav ${isSavedNews ? "nav_white-bg" : ""}`}>
@@ -17,7 +20,9 @@ function Navigation({ isSavedNews, onSignUpButtonClicked }) {
         </p>
         <button
           type="button"
-          className="nav__menu-btn"
+          className={`nav__menu-btn  ${
+            isModalOpen ? "nav__menu-btn_hidden" : ""
+          }`}
           onClick={handleMobileMenuButton}
         >
           <img
@@ -49,7 +54,7 @@ function Navigation({ isSavedNews, onSignUpButtonClicked }) {
             className={`nav__btn nav__btn_signin ${
               isSavedNews ? "nav_text_black nav_border_black" : ""
             }`}
-            onClick={onSignUpButtonClicked}
+            onClick={handleSignInButton}
           >
             Sign in
           </button>
@@ -74,7 +79,7 @@ function Navigation({ isSavedNews, onSignUpButtonClicked }) {
           className={`nav__btn nav__btn_signin ${
             isSavedNews ? "nav_text_black nav_border_black" : ""
           }`}
-          onClick={onSignUpButtonClicked}
+          onClick={handleSignInButton}
         >
           Sign in
         </button>

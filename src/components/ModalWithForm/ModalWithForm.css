@@ -32,8 +32,12 @@
   display: block;
   width: 100%;
   border: none;
-  border-bottom: 1px solid #1a1b22;
+  border-bottom: 1px solid rgb(26, 27, 34, 0.2);
   padding: 10px 0;
+}
+
+.modal__input::placeholder {
+  color: rgba(26, 27, 34, 0.2);
 }
 
 .modal__submit-btn {
@@ -51,6 +55,12 @@
   padding: 20px;
 }
 
+.modal__submit-btn:disabled {
+  background-color: #e6e8eb;
+  color: #b6bcbf;
+  box-shadow: none;
+}
+
 .modal__alt {
   margin: 16px 0 0;
   background-color: transparent;
@@ -59,4 +69,10 @@
   font-weight: 400;
   font-size: 14px;
   text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+  .modal__form-heading {
+    margin: 0 0 18px;
+  }
 }

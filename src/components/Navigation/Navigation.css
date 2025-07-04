@@ -152,6 +152,11 @@
 
   .nav__menu-btn {
     display: inline-block;
+    visibility: visible;
+  }
+
+  .nav__menu-btn_hidden {
+    visibility: hidden;
   }
 
   .nav__btn-group {

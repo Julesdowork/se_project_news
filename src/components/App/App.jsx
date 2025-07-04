@@ -15,17 +15,22 @@ import HeaderControlsContext from "../../contexts/HeaderControlsContext";
 function App() {
   const [activeModal, setActiveModal] = useState("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const closeActiveModal = () => {
     setActiveModal("");
+    setIsModalOpen(false);
   };
 
   const handleSignUpButton = () => {
     setActiveModal("register");
+    setIsModalOpen(true);
   };
 
   const handleSignInButton = () => {
+    setIsMobileMenuOpen(false);
     setActiveModal("login");
+    setIsModalOpen(true);
   };
 
   const handleMobileMenuButton = () => {
@@ -35,13 +40,15 @@ function App() {
   return (
     <div className="page">
       <HeaderControlsContext.Provider
-        value={{ isMobileMenuOpen: isMobileMenuOpen, handleMobileMenuButton }}
+        value={{
+          isMobileMenuOpen: isMobileMenuOpen,
+          isModalOpen,
+          handleMobileMenuButton,
+          handleSignInButton,
+        }}
       >
         <Routes>
-          <Route
-            path="/"
-            element={<Main onSignUpButtonClicked={handleSignUpButton} />}
-          />
+          <Route path="/" element={<Main />} />
           <Route path="/saved-news" element={<SavedNews />} />
         </Routes>
       </HeaderControlsContext.Provider>

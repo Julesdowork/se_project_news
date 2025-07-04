@@ -73,3 +73,26 @@
     padding: 34px 36px 28px;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .modal {
+    align-items: stretch;
+    margin-top: 57px;
+    height: 100vh;
+    background-color: transparent;
+  }
+
+  .modal__content {
+    padding: 16px;
+  }
+
+  .modal__close-btn {
+    top: -46px;
+    right: 16px;
+  }
+
+  .modal__close-icon {
+    width: 24px;
+    height: 24px;
+  }
+}
