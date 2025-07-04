@@ -51,11 +51,12 @@
   padding: 20px;
 }
 
-.modal__alt-btn {
-  margin-top: 16px;
+.modal__alt {
+  margin: 16px 0 0;
   background-color: transparent;
   border: none;
   font-family: Inter, Arial, Helvetica, sans-serif;
   font-weight: 400;
   font-size: 14px;
+  text-align: center;
 }

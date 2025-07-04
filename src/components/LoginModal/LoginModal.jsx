@@ -1,8 +1,16 @@
+import { useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-function LoginModal() {
+function LoginModal({ onClose, isModalOpen, onAltButtonClicked }) {
   return (
-    <ModalWithForm name="login" title="Sign in" altButtonText="Sign up">
+    <ModalWithForm
+      name="login"
+      title="Sign in"
+      altButtonText="Sign up"
+      onClose={onClose}
+      isModalOpen={isModalOpen}
+      onAltButtonClicked={onAltButtonClicked}
+    >
       <label htmlFor="login-email-input" className="modal__label">
         Email
         <input

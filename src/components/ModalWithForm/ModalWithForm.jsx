@@ -1,7 +1,15 @@
 import Modal from "../Modal/Modal";
 import "./ModalWithForm.css";
 
-function ModalWithForm({ name, title, altButtonText, onClose, isModalOpen, children }) {
+function ModalWithForm({
+  name,
+  title,
+  altButtonText,
+  onClose,
+  isModalOpen,
+  onAltButtonClicked,
+  children,
+}) {
   return (
     <Modal onClose={onClose} isModalOpen={isModalOpen}>
       <h2 className="modal__form-heading">{title}</h2>
@@ -10,9 +18,12 @@ function ModalWithForm({ name, title, altButtonText, onClose, isModalOpen, child
         <button type="submit" className="modal__submit-btn">
           {title}
         </button>
-        <button type="button" className="modal__alt-btn">
-          or <span className="modal__link">{altButtonText}</span>
-        </button>
+        <p className="modal__alt">
+          or{" "}
+          <span className="modal__link" onClick={onAltButtonClicked}>
+            {altButtonText}
+          </span>
+        </p>
         <div className="modal__submit-area"></div>
       </form>
     </Modal>

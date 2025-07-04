@@ -33,17 +33,22 @@ function App() {
   return (
     <div className="page">
       <Routes>
-        <Route path="/" element={<Main onSignUpButtonClicked={handleSignUpButton} />} />
+        <Route
+          path="/"
+          element={<Main onSignUpButtonClicked={handleSignUpButton} />}
+        />
         <Route path="/saved-news" element={<SavedNews />} />
       </Routes>
       <Footer />
       <RegisterModal
         onClose={closeActiveModal}
         isModalOpen={activeModal === "register"}
+        onAltButtonClicked={handleSignInButton}
       />
       <LoginModal
         onClose={closeActiveModal}
         isModalOpen={activeModal === "login"}
+        onAltButtonClicked={handleSignUpButton}
       />
       <RegistrationSuccessModal
         onClose={closeActiveModal}
