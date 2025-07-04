@@ -49,17 +49,23 @@
   cursor: pointer;
 }
 
-.modal__close-icon {
+.modal__close-btn {
   background-color: transparent;
   border: none;
   position: absolute;
   top: -46px;
   right: -46px;
-  background-image: url("../../assets/close-icon.svg");
   width: 40px;
   height: 40px;
   padding: 0;
   cursor: pointer;
+}
+
+.modal__close-icon {
+  filter: invert(100%) sepia(99%) saturate(2%) hue-rotate(37deg)
+    brightness(108%) contrast(100%);
+  width: 40px;
+  height: 40px;
 }
 
 @media screen and (min-width: 600px) and (max-width: 960px) {

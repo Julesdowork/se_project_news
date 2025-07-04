@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import "./Modal.css";
+import closeIcon from "../../assets/xmark.svg";
 
 function Modal({ onClose, isModalOpen, children }) {
   useEffect(() => {
@@ -33,9 +34,11 @@ function Modal({ onClose, isModalOpen, children }) {
         {children}
         <button
           type="button"
-          className="modal__close-icon"
+          className="modal__close-btn"
           onClick={onClose}
-        ></button>
+        >
+          <img src={closeIcon} alt="Click to close modal" className="modal__close-icon" />
+        </button>
       </div>
     </div>
   );

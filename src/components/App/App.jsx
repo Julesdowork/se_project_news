@@ -10,9 +10,11 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import RegistrationSuccessModal from "../RegistrationSuccessModal/RegistrationSuccessModal";
 
+import HeaderControlsContext from "../../contexts/HeaderControlsContext";
+
 function App() {
   const [activeModal, setActiveModal] = useState("");
-  const [isMobileMenuOpened, setIsMobileMenuOpened] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const closeActiveModal = () => {
     setActiveModal("");
@@ -27,18 +29,22 @@ function App() {
   };
 
   const handleMobileMenuButton = () => {
-    setIsMobileMenuOpened(!isMobileMenuOpened);
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
     <div className="page">
-      <Routes>
-        <Route
-          path="/"
-          element={<Main onSignUpButtonClicked={handleSignUpButton} />}
-        />
-        <Route path="/saved-news" element={<SavedNews />} />
-      </Routes>
+      <HeaderControlsContext.Provider
+        value={{ isMobileMenuOpen: isMobileMenuOpen, handleMobileMenuButton }}
+      >
+        <Routes>
+          <Route
+            path="/"
+            element={<Main onSignUpButtonClicked={handleSignUpButton} />}
+          />
+          <Route path="/saved-news" element={<SavedNews />} />
+        </Routes>
+      </HeaderControlsContext.Provider>
       <Footer />
       <RegisterModal
         onClose={closeActiveModal}

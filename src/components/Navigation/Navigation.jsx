@@ -1,22 +1,27 @@
+import { useEffect, useContext } from "react";
 import "./Navigation.css";
-
+import HeaderControlsContext from "../../contexts/HeaderControlsContext";
 import menuIcon from "../../assets/bars.svg";
-import closeIcon from "../../assets/close-icon.svg";
+import closeIcon from "../../assets/xmark.svg";
 
-function Navigation({
-  isSavedNews,
-  isMobileMenuOpened,
-  onSignUpButtonClicked,
-}) {
+function Navigation({ isSavedNews, onSignUpButtonClicked }) {
+  const { isMobileMenuOpen, handleMobileMenuButton } = useContext(
+    HeaderControlsContext
+  );
+
   return (
     <nav className={`nav ${isSavedNews ? "nav_white-bg" : ""}`}>
       <div className="nav__main">
         <p className={`nav__title ${isSavedNews ? "nav_text_black" : ""}`}>
           NewsExplorer
         </p>
-        <button type="button" className="nav__menu-btn">
+        <button
+          type="button"
+          className="nav__menu-btn"
+          onClick={handleMobileMenuButton}
+        >
           <img
-            src={isMobileMenuOpened ? closeIcon : menuIcon}
+            src={isMobileMenuOpen ? closeIcon : menuIcon}
             className={`nav__menu-btn-icon ${
               isSavedNews ? "nav_icon_black" : ""
             }`}
@@ -50,7 +55,11 @@ function Navigation({
           </button>
         </div>
       </div>
-      <div className={`nav__menu ${isSavedNews ? "nav__menu_white" : ""}`}>
+      <div
+        className={`nav__menu ${isSavedNews ? "nav__menu_white" : ""} ${
+          isMobileMenuOpen ? "nav__menu_opened" : ""
+        }`}
+      >
         <button className={`nav__btn ${isSavedNews ? "nav_text_black" : ""}`}>
           Home
         </button>
