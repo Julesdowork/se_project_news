@@ -1,11 +1,20 @@
+import { useEffect } from "react";
 import "./Modal.css";
 
-function Modal({ name, children }) {
+function Modal({ onClose, isModalOpen, children }) {
+  useEffect(() => {
+    if (!isModalOpen) return;
+  }, [onClose, isModalOpen]);
+
   return (
-    <div className="modal">
+    <div className={`modal ${isModalOpen ? "modal_opened" : ""}`}>
       <div className="modal__content">
         {children}
-        <button type="button" className="modal__close-icon"></button>
+        <button
+          type="button"
+          className="modal__close-icon"
+          onClick={onClose}
+        ></button>
       </div>
     </div>
   );

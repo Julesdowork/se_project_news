@@ -3,7 +3,11 @@ import "./Navigation.css";
 import menuIcon from "../../assets/bars.svg";
 import closeIcon from "../../assets/close-icon.svg";
 
-function Navigation({ isSavedNews, isMobileMenuOpened }) {
+function Navigation({
+  isSavedNews,
+  isMobileMenuOpened,
+  onSignUpButtonClicked,
+}) {
   return (
     <nav className={`nav ${isSavedNews ? "nav_white-bg" : ""}`}>
       <div className="nav__main">
@@ -40,6 +44,7 @@ function Navigation({ isSavedNews, isMobileMenuOpened }) {
             className={`nav__btn nav__btn_signin ${
               isSavedNews ? "nav_text_black nav_border_black" : ""
             }`}
+            onClick={onSignUpButtonClicked}
           >
             Sign in
           </button>
@@ -60,6 +65,7 @@ function Navigation({ isSavedNews, isMobileMenuOpened }) {
           className={`nav__btn nav__btn_signin ${
             isSavedNews ? "nav_text_black nav_border_black" : ""
           }`}
+          onClick={onSignUpButtonClicked}
         >
           Sign in
         </button>

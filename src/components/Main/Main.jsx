@@ -4,10 +4,10 @@ import NewsCardList from "../NewsCardList/NewsCardList";
 import Preloader from "../Preloader/Preloader";
 import About from "../About/About";
 
-function Main() {
+function Main({ onSignUpButtonClicked }) {
   return (
     <div className="page__content">
-      <Header />
+      <Header onSignUpButtonClicked={onSignUpButtonClicked} />
       <main className="main">
         <h2 className="main__heading">Search results</h2>
         <NewsCardList />

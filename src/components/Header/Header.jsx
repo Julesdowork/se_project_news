@@ -3,10 +3,10 @@ import "./Header.css";
 import Navigation from "../Navigation/Navigation";
 import SearchForm from "../SearchForm/SearchForm";
 
-function Header() {
+function Header({ onSignUpButtonClicked }) {
   return (
     <header className="header">
-      <Navigation />
+      <Navigation onSignUpButtonClicked={onSignUpButtonClicked} />
       <SearchForm />
     </header>
   );

@@ -1,8 +1,14 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-function RegisterModal() {
+function RegisterModal({ onClose, isModalOpen }) {
   return (
-    <ModalWithForm name="register" title="Sign up" altButtonText="Sign in">
+    <ModalWithForm
+      name="register"
+      title="Sign up"
+      altButtonText="Sign in"
+      onClose={onClose}
+      isModalOpen={isModalOpen}
+    >
       <label htmlFor="register-email-input" className="modal__label">
         Email
         <input

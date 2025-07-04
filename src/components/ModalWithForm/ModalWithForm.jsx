@@ -1,9 +1,9 @@
 import Modal from "../Modal/Modal";
 import "./ModalWithForm.css";
 
-function ModalWithForm({ name, title, altButtonText, children }) {
+function ModalWithForm({ name, title, altButtonText, onClose, isModalOpen, children }) {
   return (
-    <Modal name={name}>
+    <Modal onClose={onClose} isModalOpen={isModalOpen}>
       <h2 className="modal__form-heading">{title}</h2>
       <form name={name} className="modal__form" noValidate>
         {children}
