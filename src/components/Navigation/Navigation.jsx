@@ -13,11 +13,13 @@ function Navigation({ isSavedNews, isMobileMenuOpened }) {
         <button type="button" className="nav__menu-btn">
           <img
             src={isMobileMenuOpened ? closeIcon : menuIcon}
-            className="nav__menu-btn-icon"
+            className={`nav__menu-btn-icon ${
+              isSavedNews ? "nav_icon_black" : ""
+            }`}
             alt="Click to open or close the menu"
           />
         </button>
-        <div className={`nav__btn-group`}>
+        <div className="nav__btn-group">
           <button
             className={`nav__btn nav__btn_active ${
               isSavedNews ? "nav_text_black" : ""
@@ -43,12 +45,12 @@ function Navigation({ isSavedNews, isMobileMenuOpened }) {
           </button>
         </div>
       </div>
-      <div className="nav__menu">
+      <div className={`nav__menu ${isSavedNews ? "nav__menu_white" : ""}`}>
         <button className={`nav__btn ${isSavedNews ? "nav_text_black" : ""}`}>
           Home
         </button>
         <button
-          className={`nav__btn "nav__btn_disabled" ${
+          className={`nav__btn nav__btn_disabled ${
             isSavedNews ? "nav__btn_active nav_text_black nav_border_black" : ""
           }`}
         >

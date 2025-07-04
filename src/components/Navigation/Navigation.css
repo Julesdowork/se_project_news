@@ -104,8 +104,13 @@
   border-color: #1a1b22;
 }
 
+.nav_icon_black {
+  filter: invert(4%) sepia(5%) saturate(4377%) hue-rotate(195deg)
+    brightness(101%) contrast(86%);
+}
+
 @media screen and (min-width: 600px) and (max-width: 960px) {
-  .nav {
+  .nav__main {
     padding: 0 40px;
   }
 
@@ -129,9 +134,6 @@
 }
 
 @media screen and (max-width: 600px) {
-  .nav {
-  }
-
   .nav__main {
     padding: 16px;
   }
@@ -158,6 +160,10 @@
     background-color: #1a1b22;
   }
 
+  .nav__menu_white {
+    background-color: #fff;
+  }
+
   .nav__btn {
     padding: 0;
     font-size: 18px;
@@ -169,5 +175,9 @@
     align-self: stretch;
     padding: 16px;
     line-height: 1;
+  }
+
+  .nav_text_black {
+    color: #1a1b22;
   }
 }

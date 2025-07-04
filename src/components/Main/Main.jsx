@@ -1,7 +1,7 @@
 import "./Main.css";
 import Header from "../Header/Header";
 import NewsCardList from "../NewsCardList/NewsCardList";
-import Preloader from "../Preloader";
+import Preloader from "../Preloader/Preloader";
 import About from "../About/About";
 
 function Main() {
