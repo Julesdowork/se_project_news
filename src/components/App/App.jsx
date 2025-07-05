@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate, Route, Routes } from "react-router-dom";
 
+import { defaultNewsArticles } from "../../utils/constants";
+import { filterNewsData } from "../../utils/newsApi";
+
 import "./App.css";
 
 import Main from "../Main/Main";
@@ -16,6 +19,7 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [newsArticles, setNewsArticles] = useState([]);
 
   const closeActiveModal = () => {
     setActiveModal("");
@@ -37,6 +41,12 @@ function App() {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  useEffect(() => {
+    const articlesData = filterNewsData(defaultNewsArticles);
+    setNewsArticles(articlesData);
+    console.log(newsArticles);
+  }, []);
+
   return (
     <div className="page">
       <HeaderControlsContext.Provider
@@ -48,7 +58,7 @@ function App() {
         }}
       >
         <Routes>
-          <Route path="/" element={<Main />} />
+          <Route path="/" element={<Main articles={newsArticles} />} />
           <Route path="/saved-news" element={<SavedNews />} />
         </Routes>
       </HeaderControlsContext.Provider>

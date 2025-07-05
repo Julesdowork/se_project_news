@@ -1,13 +1,12 @@
 import "./NewsCardList.css";
 import NewsCard from "../NewsCard/NewsCard";
 
-function NewsCardList() {
+function NewsCardList({ articles }) {
   return (
     <ul className="news-card-list">
-      <NewsCard />
-      <NewsCard />
-      <NewsCard />
-      <NewsCard />
+      {articles.map((article) => {
+        return <NewsCard key={article.source.id} article={article} />;
+      })}
     </ul>
   );
 }
