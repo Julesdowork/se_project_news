@@ -44,7 +44,6 @@ function App() {
   useEffect(() => {
     const articlesData = filterNewsData(defaultNewsArticles);
     setNewsArticles(articlesData);
-    console.log(newsArticles);
   }, []);
 
   return (

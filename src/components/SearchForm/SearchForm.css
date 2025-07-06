@@ -35,7 +35,23 @@
   font-family: Roboto, Arial, Helvetica, sans-serif;
   font-size: 16px;
   line-height: 1.375;
+  color: #1a1b22;
+}
+
+.search-form__input::placeholder {
   color: #b6bcbf;
+}
+
+.search-form__error {
+  color: red;
+  visibility: hidden;
+  margin: 8px 8px 0;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.search-form__error_visible {
+  visibility: visible;
 }
 
 .search-form__btn {
@@ -51,6 +67,11 @@
   aspect-ratio: 1;
   position: absolute;
   right: 0;
+}
+
+.search-form__btn:disabled {
+  background-color: #e6e8eb;
+  color: #b6bcbf;
 }
 
 @media screen and (min-width: 600px) and (max-width: 960px) {
