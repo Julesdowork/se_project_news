@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { useNavigate, Route, Routes } from "react-router-dom";
 
 import { defaultNewsArticles } from "../../utils/constants";
-import { filterNewsData } from "../../utils/newsApi";
+import { filterNewsData, apiKey } from "../../utils/newsApi";
+import { checkResponses } from "../../utils/api";
 
 import "./App.css";
 
@@ -41,6 +42,16 @@ function App() {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const handleSearchNews = (keyword) => {
+    console.log(keyword);
+    fetch(
+      `https://newsapi.org/v2/everything?q=${keyword}&apiKey=${apiKey}&from=2025-06-30&to=2025-07-06`
+    )
+      .then(checkResponses)
+      .then(console.log)
+      .catch(console.error);
+  };
+
   useEffect(() => {
     const articlesData = filterNewsData(defaultNewsArticles);
     setNewsArticles(articlesData);
@@ -57,7 +68,15 @@ function App() {
         }}
       >
         <Routes>
-          <Route path="/" element={<Main articles={newsArticles} />} />
+          <Route
+            path="/"
+            element={
+              <Main
+                articles={newsArticles}
+                handleSearchNews={handleSearchNews}
+              />
+            }
+          />
           <Route path="/saved-news" element={<SavedNews />} />
         </Routes>
       </HeaderControlsContext.Provider>

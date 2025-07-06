@@ -2,13 +2,13 @@ import "./SearchForm.css";
 
 import { useForm } from "../../hooks/useForm";
 
-function SearchForm() {
+function SearchForm({ handleSearchNews }) {
   const initialValue = { "search-news": "" };
   const { values, errors, isValid, handleChange } = useForm(initialValue);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log("submitted");
+    handleSearchNews(values["search-news"]);
   };
 
   return (
@@ -32,6 +32,7 @@ function SearchForm() {
         <button
           type="submit"
           className="search-form__btn"
+          disabled={!isValid ? "disabled" : ""}
         >
           Search
         </button>

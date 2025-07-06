@@ -4,10 +4,10 @@ import NewsCardList from "../NewsCardList/NewsCardList";
 import Preloader from "../Preloader/Preloader";
 import About from "../About/About";
 
-function Main({ articles }) {
+function Main({ articles, handleSearchNews }) {
   return (
     <div className="page__content">
-      <Header />
+      <Header handleSearchNews={handleSearchNews} />
       <main className="main">
         <h2 className="main__heading">Search results</h2>
         <NewsCardList articles={articles} />
