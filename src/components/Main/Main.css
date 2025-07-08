@@ -5,6 +5,11 @@
   background-color: #f5f6f7;
 }
 
+.main__search-results {
+  display: flex;
+  flex-direction: column;
+}
+
 .main__heading {
   margin: 0 0 64px;
   font-family: "Roboto Slab", Arial, Helvetica, sans-serif;
@@ -27,6 +32,7 @@
   font-size: 18px;
   line-height: 1.33;
   align-self: center;
+  margin: 64px 0 0;
 }
 
 .main__btn:hover {

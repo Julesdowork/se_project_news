@@ -21,6 +21,7 @@ function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newsArticles, setNewsArticles] = useState([]);
+  const [searchingState, setSearchingState] = useState("");
 
   const closeActiveModal = () => {
     setActiveModal("");
@@ -43,18 +44,30 @@ function App() {
   };
 
   const handleSearchNews = (keyword) => {
-    console.log(keyword);
+    setSearchingState("searching");
     fetch(
       `https://newsapi.org/v2/everything?q=${keyword}&apiKey=${apiKey}&from=2025-06-30&to=2025-07-06`
     )
       .then(checkResponses)
-      .then(console.log)
+      .then((data) => {
+        if (newsArticles.length > 0) {
+          setNewsArticles([]);
+        }
+
+        const articles = filterNewsData(data);
+        if (articles.length === 0) {
+          setSearchingState("not-found");
+        } else {
+          setSearchingState("found");
+          setNewsArticles(articles);
+        }
+      })
       .catch(console.error);
   };
 
   useEffect(() => {
-    const articlesData = filterNewsData(defaultNewsArticles);
-    setNewsArticles(articlesData);
+    // const articlesData = filterNewsData(defaultNewsArticles);
+    // setNewsArticles(articlesData);
   }, []);
 
   return (
@@ -72,7 +85,8 @@ function App() {
             path="/"
             element={
               <Main
-                articles={newsArticles}
+                allArticles={newsArticles}
+                searchingState={searchingState}
                 handleSearchNews={handleSearchNews}
               />
             }

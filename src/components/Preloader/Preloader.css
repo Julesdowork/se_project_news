@@ -6,15 +6,15 @@
 
 .preloader__loading,
 .preloader__not-found {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   max-width: 230px;
   width: 100%;
 }
 
-.preloader_hidden {
-  display: none;
+.preloader_visible {
+  display: flex;
 }
 
 .preloader__circle-preloader {
@@ -44,7 +44,7 @@
 }
 
 .preloader__icon {
-  background-image: url("../assets/not-found.png");
+  background-image: url("../../assets/not-found.png");
   width: 83px;
   height: 83px;
 }
