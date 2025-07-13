@@ -1,6 +1,22 @@
+import { useState } from "react";
+import { useForm } from "../../hooks/useForm";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-function RegisterModal({ onClose, isModalOpen, onAltButtonClicked }) {
+function RegisterModal({
+  onClose,
+  isModalOpen,
+  onAltButtonClicked,
+  handleRegistration,
+}) {
+  const initialValues = { email: "", password: "", username: "" };
+  const { values, errors, isValid, setValues, setIsValid, handleChange } =
+    useForm(initialValues);
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    handleRegistration(values);
+  };
+
   return (
     <ModalWithForm
       name="register"
@@ -8,7 +24,9 @@ function RegisterModal({ onClose, isModalOpen, onAltButtonClicked }) {
       altButtonText="Sign in"
       onClose={onClose}
       isModalOpen={isModalOpen}
+      formValid={isValid}
       onAltButtonClicked={onAltButtonClicked}
+      onSubmit={handleSubmit}
     >
       <label htmlFor="register-email-input" className="modal__label">
         Email
@@ -19,6 +37,8 @@ function RegisterModal({ onClose, isModalOpen, onAltButtonClicked }) {
           id="register-email-input"
           placeholder="Enter email"
           required
+          value={values.email}
+          onChange={handleChange}
         />
       </label>
       <label htmlFor="register-password-input" className="modal__label">
@@ -30,6 +50,8 @@ function RegisterModal({ onClose, isModalOpen, onAltButtonClicked }) {
           id="register-password-input"
           placeholder="Enter password"
           required
+          value={values.password}
+          onChange={handleChange}
         />
       </label>
       <label htmlFor="register-username-input" className="modal__label">
@@ -41,6 +63,8 @@ function RegisterModal({ onClose, isModalOpen, onAltButtonClicked }) {
           id="register-username-input"
           placeholder="Enter your username"
           required
+          value={values.username}
+          onChange={handleChange}
         />
       </label>
     </ModalWithForm>

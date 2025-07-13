@@ -5,6 +5,13 @@
   display: grid;
   grid-template-columns: repeat(3, auto);
   gap: 16px;
+  max-height: 542px;
+  overflow: hidden;
+}
+
+.news-card-list_showAll {
+  max-height: none;
+  overflow: visible;
 }
 
 @media screen and (min-width: 600px) and (max-width: 960px) {

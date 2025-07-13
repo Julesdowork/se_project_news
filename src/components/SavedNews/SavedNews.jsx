@@ -3,13 +3,21 @@ import Navigation from "../Navigation/Navigation";
 import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
 import NewsCardList from "../NewsCardList/NewsCardList";
 
-function SavedNews() {
+function SavedNews({ savedArticles, savedKeywords, handleDeleteArticle }) {
   return (
     <div className="page__content">
       <Navigation isSavedNews={true} />
-      <SavedNewsHeader />
+      <SavedNewsHeader
+        count={savedArticles.length}
+        savedKeywords={savedKeywords}
+      />
       <section className="saved-news">
-        <NewsCardList />
+        <NewsCardList
+          articles={savedArticles}
+          showAll={true}
+          isSavedNews={true}
+          handleDeleteArticle={handleDeleteArticle}
+        />
       </section>
     </div>
   );

@@ -15,6 +15,10 @@
   box-shadow: 0 -1px 0 #d1d2d6;
 }
 
+.nav__link {
+  text-decoration: none;
+}
+
 .nav__title {
   margin: 30px 0 26px;
   font-family: "Roboto Slab", Arial, Helvetica, sans-serif;
@@ -22,6 +26,7 @@
   font-size: 20px;
   line-height: 1.2;
   color: #fff;
+  cursor: pointer;
 }
 
 .nav__title_black {
@@ -59,17 +64,7 @@
   line-height: 1.33;
   padding: 30px 26px;
   color: #b6bcbf;
-}
-
-.nav__btn {
-  background-color: transparent;
-  border: 0;
-  font-family: Roboto, Arial, Helvetica, sans-serif;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 1.33;
-  padding: 30px 26px;
-  color: #b6bcbf;
+  cursor: pointer;
 }
 
 .nav__btn_active {
@@ -86,16 +81,29 @@
   display: none;
 }
 
-.nav__btn_signin {
+.nav__btn_type_signin {
   border: 1px solid #fff;
   border-radius: 100px;
   color: #fff;
   padding: 13px 60px;
 }
 
-.nav__btn_signin-black {
-  border: 1px solid #1a1b22;
-  color: #1a1b22;
+.nav__btn_type_signout {
+  border: 1px solid #fff;
+  border-radius: 100px;
+  color: #fff;
+  padding: 13px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.nav__btn-icon {
+  width: 22px;
+  height: 22px;
+  filter: invert(98%) sepia(66%) saturate(219%) hue-rotate(241deg)
+    brightness(119%) contrast(100%);
 }
 
 .nav_text_black {

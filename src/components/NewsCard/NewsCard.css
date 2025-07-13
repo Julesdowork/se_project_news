@@ -18,7 +18,7 @@
   object-fit: fill;
 }
 
-.news-card__save-btn {
+.news-card__btn {
   width: 40px;
   height: 40px;
   position: absolute;
@@ -33,8 +33,11 @@
   padding: 0;
 }
 
-.news-card__save-btn::before {
-  content: "Sign in to save articles";
+.news-card_hidden {
+  display: none;
+}
+
+.news-card__btn:hover .news-card__tooltip {
   background-color: #fff;
   color: #000;
   font-family: Roboto, Arial, Helvetica, sans-serif;
@@ -54,11 +57,26 @@
   transform: translateX(-45px);
 }
 
-.news-card__save-icon {
+.news-card__icon {
   width: 24px;
   height: 24px;
   filter: invert(74%) sepia(9%) saturate(137%) hue-rotate(155deg)
     brightness(99%) contrast(94%);
+}
+
+.news-card__btn:hover .news-card__icon {
+  filter: invert(4%) sepia(4%) saturate(6744%) hue-rotate(195deg)
+    brightness(93%) contrast(86%);
+}
+
+.news-card__icon_type_saved {
+  filter: invert(36%) sepia(61%) saturate(2648%) hue-rotate(207deg)
+    brightness(94%) contrast(91%);
+}
+
+.news-card__btn:hover .news-card__icon_type_saved {
+  filter: invert(36%) sepia(61%) saturate(2648%) hue-rotate(207deg)
+    brightness(94%) contrast(91%);
 }
 
 .news-card__info {

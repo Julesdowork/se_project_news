@@ -6,18 +6,19 @@ import NewsCardList from "../NewsCardList/NewsCardList";
 import Preloader from "../Preloader/Preloader";
 import About from "../About/About";
 
-function Main({ allArticles, searchingState, handleSearchNews }) {
-  const [displayedArticles, setDisplayedArticles] = useState([]);
+function Main({
+  allArticles,
+  searchingState,
+  handleSearchNews,
+  handleSaveArticle,
+}) {
   const [isShowingAll, setIsShowingAll] = useState(false);
 
   const handleShowMoreBtn = () => {
-    setDisplayedArticles(allArticles);
     setIsShowingAll(true);
   };
 
   useEffect(() => {
-    setDisplayedArticles([]);
-    setDisplayedArticles(allArticles.slice(0, 3));
     setIsShowingAll(false);
   }, [allArticles]);
 
@@ -33,7 +34,11 @@ function Main({ allArticles, searchingState, handleSearchNews }) {
           {searchingState === "found" && (
             <div className="main__search-results">
               <h2 className="main__heading">Search results</h2>
-              <NewsCardList articles={displayedArticles} />
+              <NewsCardList
+                articles={allArticles}
+                showAll={isShowingAll}
+                handleSaveArticle={handleSaveArticle}
+              />
               {!isShowingAll && (
                 <button
                   type="button"

@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { useNavigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
-import { defaultNewsArticles } from "../../utils/constants";
 import { filterNewsData, apiKey } from "../../utils/newsApi";
 import { checkResponses } from "../../utils/api";
+import { authorizeUser, registerUser, checkToken } from "../../utils/auth";
+import { getToken, setToken, removeToken } from "../../utils/token";
 
 import "./App.css";
 
@@ -15,6 +16,7 @@ import LoginModal from "../LoginModal/LoginModal";
 import RegistrationSuccessModal from "../RegistrationSuccessModal/RegistrationSuccessModal";
 
 import HeaderControlsContext from "../../contexts/HeaderControlsContext";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -22,6 +24,11 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newsArticles, setNewsArticles] = useState([]);
   const [searchingState, setSearchingState] = useState("");
+  const [savedArticles, setSavedArticles] = useState([]);
+  const [currentKeyword, setCurrentKeyword] = useState("");
+  const [savedKeywords, setSavedKeywords] = useState([]);
+  const [currentUser, setCurrentUser] = useState({});
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const closeActiveModal = () => {
     setActiveModal("");
@@ -60,56 +67,105 @@ function App() {
         } else {
           setSearchingState("found");
           setNewsArticles(articles);
+          setCurrentKeyword(keyword);
         }
       })
       .catch(console.error);
   };
 
-  useEffect(() => {
-    // const articlesData = filterNewsData(defaultNewsArticles);
-    // setNewsArticles(articlesData);
-  }, []);
+  const handleSaveArticle = (article) => {
+    setSavedArticles([...savedArticles, article]);
+
+    if (!savedKeywords.includes(currentKeyword)) {
+      setSavedKeywords([...savedKeywords, currentKeyword]);
+    }
+  };
+
+  const handleDeleteArticle = (article) => {
+    setSavedArticles((prevArticles) =>
+      prevArticles.filter((item) => item.id !== article.id)
+    );
+  };
+
+  const handleRegistration = ({ email, password, username }) => {
+    registerUser(email, password, username)
+      .then((user) => {
+        closeActiveModal();
+        setActiveModal("registration-success");
+      })
+      .catch(console.error);
+  };
+
+  const handleLogin = ({ email, password }) => {
+    authorizeUser(email, password)
+      .then((token) => {
+        setToken(token);
+        return checkToken(token);
+      })
+      .then((data) => {
+        closeActiveModal();
+        console.log(data);
+        setCurrentUser(data);
+        setIsLoggedIn(true);
+      })
+      .catch(console.error);
+  };
 
   return (
-    <div className="page">
-      <HeaderControlsContext.Provider
-        value={{
-          isMobileMenuOpen: isMobileMenuOpen,
-          isModalOpen,
-          handleMobileMenuButton,
-          handleSignInButton,
-        }}
-      >
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Main
-                allArticles={newsArticles}
-                searchingState={searchingState}
-                handleSearchNews={handleSearchNews}
-              />
-            }
-          />
-          <Route path="/saved-news" element={<SavedNews />} />
-        </Routes>
-      </HeaderControlsContext.Provider>
-      <Footer />
-      <RegisterModal
-        onClose={closeActiveModal}
-        isModalOpen={activeModal === "register"}
-        onAltButtonClicked={handleSignInButton}
-      />
-      <LoginModal
-        onClose={closeActiveModal}
-        isModalOpen={activeModal === "login"}
-        onAltButtonClicked={handleSignUpButton}
-      />
-      <RegistrationSuccessModal
-        onClose={closeActiveModal}
-        isModalOpen={activeModal === "registration-success"}
-      />
-    </div>
+    <CurrentUserContext.Provider value={{ currentUser, isLoggedIn }}>
+      <div className="page">
+        <HeaderControlsContext.Provider
+          value={{
+            isMobileMenuOpen: isMobileMenuOpen,
+            isModalOpen,
+            handleMobileMenuButton,
+            handleSignInButton,
+          }}
+        >
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Main
+                  allArticles={newsArticles}
+                  searchingState={searchingState}
+                  handleSearchNews={handleSearchNews}
+                  handleSaveArticle={handleSaveArticle}
+                />
+              }
+            />
+            <Route
+              path="/saved-news"
+              element={
+                <SavedNews
+                  savedArticles={savedArticles}
+                  savedKeywords={savedKeywords}
+                  handleDeleteArticle={handleDeleteArticle}
+                />
+              }
+            />
+          </Routes>
+        </HeaderControlsContext.Provider>
+        <Footer />
+        <RegisterModal
+          onClose={closeActiveModal}
+          isModalOpen={activeModal === "register"}
+          onAltButtonClicked={handleSignInButton}
+          handleRegistration={handleRegistration}
+        />
+        <LoginModal
+          onClose={closeActiveModal}
+          isModalOpen={activeModal === "login"}
+          onAltButtonClicked={handleSignUpButton}
+          handleLogin={handleLogin}
+        />
+        <RegistrationSuccessModal
+          onClose={closeActiveModal}
+          isModalOpen={activeModal === "registration-success"}
+          onAltButtonClicked={handleSignInButton}
+        />
+      </div>
+    </CurrentUserContext.Provider>
   );
 }
 
