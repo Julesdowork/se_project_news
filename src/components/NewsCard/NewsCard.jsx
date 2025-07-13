@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import "./NewsCard.css";
 import { getDate } from "../../utils/newsApi";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 import bookmarkIcon from "../../assets/bookmark.svg";
 import bookmarkSolidIcon from "../../assets/bookmark-solid.svg";
@@ -14,6 +15,7 @@ function NewsCard({
   handleDeleteArticle,
 }) {
   const [isSaved, setIsSaved] = useState(false);
+  const { isLoggedIn } = useContext(CurrentUserContext);
 
   const handleSaveBtnClicked = () => {
     setIsSaved(true);
@@ -44,7 +46,11 @@ function NewsCard({
           }`}
           alt="Click here to save this article"
         />
-        <span className="news-card__tooltip news-card_hidden">
+        <span
+          className={`${
+            !isLoggedIn ? "news-card__tooltip" : ""
+          } news-card_hidden`}
+        >
           Sign in to save articles
         </span>
       </button>
@@ -58,7 +64,11 @@ function NewsCard({
           className={`news-card__icon`}
           alt="Click here to remove article from your list"
         />
-        <span className="news-card__tooltip news-card_hidden">
+        <span
+          className={`${
+            !isLoggedIn ? "news-card__tooltip" : ""
+          } news-card_hidden`}
+        >
           Remove from saved
         </span>
       </button>

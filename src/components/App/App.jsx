@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 
 import { filterNewsData, apiKey } from "../../utils/newsApi";
 import { checkResponses } from "../../utils/api";
@@ -19,6 +19,8 @@ import HeaderControlsContext from "../../contexts/HeaderControlsContext";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function App() {
+  const navigate = useNavigate();
+
   const [activeModal, setActiveModal] = useState("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -111,6 +113,26 @@ function App() {
       .catch(console.error);
   };
 
+  const handleSignOutButton = () => {
+    removeToken();
+    navigate("/");
+    setIsLoggedIn(false);
+    setCurrentUser({});
+  };
+
+  useEffect(() => {
+    const token = getToken();
+
+    if (!token) return;
+
+    checkToken(token)
+      .then((data) => {
+        setCurrentUser(data);
+        setIsLoggedIn(true);
+      })
+      .catch(console.error);
+  }, []);
+
   return (
     <CurrentUserContext.Provider value={{ currentUser, isLoggedIn }}>
       <div className="page">
@@ -120,6 +142,7 @@ function App() {
             isModalOpen,
             handleMobileMenuButton,
             handleSignInButton,
+            handleSignOutButton,
           }}
         >
           <Routes>

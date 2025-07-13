@@ -13,6 +13,7 @@ function Navigation({ isSavedNews }) {
     isModalOpen,
     handleMobileMenuButton,
     handleSignInButton,
+    handleSignOutButton,
   } = useContext(HeaderControlsContext);
 
   const { currentUser, isLoggedIn } = useContext(CurrentUserContext);
@@ -68,7 +69,7 @@ function Navigation({ isSavedNews }) {
               className={`nav__btn nav__btn_type_signout ${
                 isSavedNews ? "nav_text_black nav_border_black" : ""
               }`}
-              onClick={handleSignInButton}
+              onClick={handleSignOutButton}
             >
               {currentUser.data.username}
               <img
