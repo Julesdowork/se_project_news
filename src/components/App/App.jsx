@@ -15,6 +15,7 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import RegistrationSuccessModal from "../RegistrationSuccessModal/RegistrationSuccessModal";
 import LogoutModal from "../LogoutModal/LogoutModal";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 import HeaderControlsContext from "../../contexts/HeaderControlsContext";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
@@ -166,11 +167,13 @@ function App() {
             <Route
               path="/saved-news"
               element={
-                <SavedNews
-                  savedArticles={savedArticles}
-                  savedKeywords={savedKeywords}
-                  handleDeleteArticle={handleDeleteArticle}
-                />
+                <ProtectedRoute isLoggedIn={isLoggedIn}>
+                  <SavedNews
+                    savedArticles={savedArticles}
+                    savedKeywords={savedKeywords}
+                    handleDeleteArticle={handleDeleteArticle}
+                  />
+                </ProtectedRoute>
               }
             />
           </Routes>
