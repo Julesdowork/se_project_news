@@ -14,6 +14,7 @@ import Footer from "../Footer/Footer";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import RegistrationSuccessModal from "../RegistrationSuccessModal/RegistrationSuccessModal";
+import LogoutModal from "../LogoutModal/LogoutModal";
 
 import HeaderControlsContext from "../../contexts/HeaderControlsContext";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
@@ -45,6 +46,11 @@ function App() {
   const handleSignInButton = () => {
     setIsMobileMenuOpen(false);
     setActiveModal("login");
+    setIsModalOpen(true);
+  };
+
+  const handleSignOutButton = () => {
+    setActiveModal("logout");
     setIsModalOpen(true);
   };
 
@@ -106,14 +112,14 @@ function App() {
       })
       .then((data) => {
         closeActiveModal();
-        console.log(data);
         setCurrentUser(data);
         setIsLoggedIn(true);
       })
       .catch(console.error);
   };
 
-  const handleSignOutButton = () => {
+  const handleLogout = () => {
+    closeActiveModal();
     removeToken();
     navigate("/");
     setIsLoggedIn(false);
@@ -186,6 +192,11 @@ function App() {
           onClose={closeActiveModal}
           isModalOpen={activeModal === "registration-success"}
           onAltButtonClicked={handleSignInButton}
+        />
+        <LogoutModal
+          onClose={closeActiveModal}
+          isModalOpen={activeModal === "logout"}
+          onConfirm={handleLogout}
         />
       </div>
     </CurrentUserContext.Provider>
