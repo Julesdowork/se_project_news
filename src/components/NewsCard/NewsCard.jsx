@@ -34,6 +34,9 @@ function NewsCard({
         alt={`Image for ${article.title}`}
         className="news-card__img"
       />
+      {isSavedNews && (
+        <span className="news-card__keyword">{article.keyword}</span>
+      )}
       <button
         type="button"
         className={`news-card__btn ${isSavedNews ? "news-card_hidden" : ""}`}

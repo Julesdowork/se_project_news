@@ -18,6 +18,20 @@
   object-fit: fill;
 }
 
+.news-card__keyword {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #1a1b22;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 8px 22px;
+}
+
 .news-card__btn {
   width: 40px;
   height: 40px;

@@ -84,6 +84,7 @@ function App() {
 
   const handleSaveArticle = (article) => {
     setSavedArticles([...savedArticles, article]);
+    article.keyword = currentKeyword;
 
     if (!savedKeywords.includes(currentKeyword)) {
       setSavedKeywords([...savedKeywords, currentKeyword]);
