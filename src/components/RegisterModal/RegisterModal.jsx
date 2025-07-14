@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useForm } from "../../hooks/useForm";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
@@ -9,8 +8,7 @@ function RegisterModal({
   handleRegistration,
 }) {
   const initialValues = { email: "", password: "", username: "" };
-  const { values, errors, isValid, setValues, setIsValid, handleChange } =
-    useForm(initialValues);
+  const { values, errors, isValid, handleChange } = useForm(initialValues);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -40,6 +38,7 @@ function RegisterModal({
           value={values.email}
           onChange={handleChange}
         />
+        <span className="modal__error">{errors.email}</span>
       </label>
       <label htmlFor="register-password-input" className="modal__label">
         Password
@@ -50,9 +49,11 @@ function RegisterModal({
           id="register-password-input"
           placeholder="Enter password"
           required
+          minLength={2}
           value={values.password}
           onChange={handleChange}
         />
+        <span className="modal__error">{errors.password}</span>
       </label>
       <label htmlFor="register-username-input" className="modal__label">
         Username
@@ -63,9 +64,12 @@ function RegisterModal({
           id="register-username-input"
           placeholder="Enter your username"
           required
+          minLength={2}
+          maxLength={30}
           value={values.username}
           onChange={handleChange}
         />
+        <span className="modal__error">{errors.username}</span>
       </label>
     </ModalWithForm>
   );

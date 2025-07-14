@@ -1,6 +1,5 @@
-import { useEffect } from "react";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useForm } from "../../hooks/useForm";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 function LoginModal({ onClose, isModalOpen, onAltButtonClicked, handleLogin }) {
   const initialValues = { email: "", password: "" };
@@ -34,6 +33,7 @@ function LoginModal({ onClose, isModalOpen, onAltButtonClicked, handleLogin }) {
           value={values.email}
           onChange={handleChange}
         />
+        <span className="modal__error">{errors.email}</span>
       </label>
       <label htmlFor="login-password-input" className="modal__label">
         Password
@@ -44,9 +44,11 @@ function LoginModal({ onClose, isModalOpen, onAltButtonClicked, handleLogin }) {
           id="login-password-input"
           placeholder="Enter password"
           required
+          minLength={2}
           value={values.password}
           onChange={handleChange}
         />
+        <span className="modal__error">{errors.password}</span>
       </label>
     </ModalWithForm>
   );
