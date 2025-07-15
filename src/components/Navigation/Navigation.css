@@ -1,6 +1,9 @@
 .nav {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px;
+  box-shadow: 0 -1px inset rgba(255, 255, 255, 0.2);
+  position: relative;
 }
 
 .nav__main {
@@ -152,8 +155,18 @@
 }
 
 @media screen and (max-width: 600px) {
+  .nav_mobile-open {
+    background-color: #1a1b22;
+    z-index: 1;
+  }
+
+  .nav_mobile-open_white {
+    background-color: #fff;
+  }
+
   .nav__main {
     padding: 16px;
+    position: relative;
   }
 
   .nav__title {
@@ -175,34 +188,54 @@
     display: none;
   }
 
-  .nav__menu_opened {
+  .nav__btn-group_mobile {
     display: flex;
     flex-direction: column;
     align-items: start;
-    padding: 16px;
+    gap: 22px;
+    position: absolute;
+    top: 56px;
+    left: 0;
+    right: 0;
     background-color: #1a1b22;
-  }
-
-  .nav__menu_white {
-    background-color: #fff;
+    padding: 16px 16px 24px;
+    z-index: 1;
   }
 
   .nav__btn {
     padding: 0;
     font-size: 18px;
     line-height: 3.1;
-    color: #fff;
   }
 
-  .nav__btn_signin {
-    align-self: stretch;
+  .nav__btn_active {
+    border: none;
+  }
+
+  .nav__btn_type_signin,
+  .nav__btn_type_signout {
+    width: 100%;
     padding: 16px;
     line-height: 1;
     border: 1px solid #fff;
     border-radius: 100px;
+    justify-content: center;
   }
 
   .nav_text_black {
     color: #1a1b22;
+    background-color: #fff;
+  }
+
+  .nav_text_grey {
+    color: #b6bcbf;
+  }
+
+  .nav_border_black {
+    border-color: #1a1b22;
+  }
+
+  .nav_bg_white {
+    background-color: #fff;
   }
 }

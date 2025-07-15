@@ -16,6 +16,7 @@ import LoginModal from "../LoginModal/LoginModal";
 import RegistrationSuccessModal from "../RegistrationSuccessModal/RegistrationSuccessModal";
 import LogoutModal from "../LogoutModal/LogoutModal";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import Overlay from "../Overlay/Overlay";
 
 import HeaderControlsContext from "../../contexts/HeaderControlsContext";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
@@ -51,6 +52,7 @@ function App() {
   };
 
   const handleSignOutButton = () => {
+    setIsMobileMenuOpen(false);
     setActiveModal("logout");
     setIsModalOpen(true);
   };
@@ -150,7 +152,7 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={{ currentUser, isLoggedIn }}>
-      <div className="page">
+      <div className="page page_mobile-menu_open">
         <HeaderControlsContext.Provider
           value={{
             isMobileMenuOpen: isMobileMenuOpen,
@@ -209,6 +211,7 @@ function App() {
           isModalOpen={activeModal === "logout"}
           onConfirm={handleLogout}
         />
+        <Overlay isMobileMenuOpen={isMobileMenuOpen}></Overlay>
       </div>
     </CurrentUserContext.Provider>
   );

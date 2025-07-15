@@ -6,7 +6,7 @@ import SearchForm from "../SearchForm/SearchForm";
 function Header({ handleSearchNews }) {
   return (
     <header className="header">
-      <Navigation />
+      <Navigation currentRoute="home" />
       <SearchForm handleSearchNews={handleSearchNews} />
     </header>
   );

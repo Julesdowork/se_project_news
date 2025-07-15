@@ -6,7 +6,7 @@ import NewsCardList from "../NewsCardList/NewsCardList";
 function SavedNews({ savedArticles, savedKeywords, handleDeleteArticle }) {
   return (
     <div className="page__content">
-      <Navigation isSavedNews={true} />
+      <Navigation currentRoute="saved-news" />
       <SavedNewsHeader
         count={savedArticles.length}
         savedKeywords={savedKeywords}
