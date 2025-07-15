@@ -142,8 +142,12 @@
     padding: 17px 8px;
   }
 
-  .nav__btn_signin {
+  .nav__btn_type_signin {
     padding: 7px 50px;
+  }
+
+  .nav__btn_type_signout {
+    padding: 7px 15px;
   }
 }
 
@@ -194,6 +198,8 @@
     align-self: stretch;
     padding: 16px;
     line-height: 1;
+    border: 1px solid #fff;
+    border-radius: 100px;
   }
 
   .nav_text_black {

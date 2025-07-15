@@ -13,7 +13,7 @@ function About() {
       <section className="about__bio">
         <h2 className="about__heading">About the author</h2>
         <p className="about__body">
-          Hey, everyone. My name is Julian McNeill, and I'm a full-stack
+          Hey, everyone. My name is Julian McNeill, and I&apos;m a full-stack
           software engineer. My primary tool stack includes HTML, CSS,
           JavaScript, and the MERN stack.
         </p>
@@ -43,8 +43,8 @@ function About() {
           </li>
         </ul>
         <p className="about__body">
-          If you're currently looking for a passionate web developer with
-          several years of experience with MERN stack technology, I'm your man!
+          If you&apos;re currently looking for a passionate web developer with
+          several years of experience with MERN stack technology, I&apos;m your man!
         </p>
       </section>
     </div>

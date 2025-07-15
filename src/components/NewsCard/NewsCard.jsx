@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import "./NewsCard.css";
 import { getDate } from "../../utils/newsApi";
@@ -18,6 +18,8 @@ function NewsCard({
   const { isLoggedIn } = useContext(CurrentUserContext);
 
   const handleSaveBtnClicked = () => {
+    if (isSaved) return;
+
     setIsSaved(true);
     handleSaveArticle(article);
   };
@@ -26,6 +28,10 @@ function NewsCard({
     setIsSaved(false);
     handleDeleteArticle(article);
   };
+
+  useEffect(() => {
+    setIsSaved(article.isSaved);
+  }, [isSaved]);
 
   return (
     <li className="news-card">

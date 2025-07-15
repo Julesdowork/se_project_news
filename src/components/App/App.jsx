@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 
-import { filterNewsData, apiKey } from "../../utils/newsApi";
+import { filterNewsData, apiKey, getRelevantDates } from "../../utils/newsApi";
 import { checkResponses } from "../../utils/api";
 import { authorizeUser, registerUser, checkToken } from "../../utils/auth";
 import { getToken, setToken, removeToken } from "../../utils/token";
@@ -61,8 +61,9 @@ function App() {
 
   const handleSearchNews = (keyword) => {
     setSearchingState("searching");
+    const dates = getRelevantDates();
     fetch(
-      `https://newsapi.org/v2/everything?q=${keyword}&apiKey=${apiKey}&from=2025-06-30&to=2025-07-06`
+      `https://newsapi.org/v2/everything?q=${keyword}&apiKey=${apiKey}&from=${dates[0]}&to=${dates[1]}`
     )
       .then(checkResponses)
       .then((data) => {
@@ -85,6 +86,7 @@ function App() {
   const handleSaveArticle = (article) => {
     setSavedArticles([...savedArticles, article]);
     article.keyword = currentKeyword;
+    article.isSaved = true;
 
     if (!savedKeywords.includes(currentKeyword)) {
       setSavedKeywords([...savedKeywords, currentKeyword]);
@@ -92,14 +94,19 @@ function App() {
   };
 
   const handleDeleteArticle = (article) => {
+    article.isSaved = false;
+
     setSavedArticles((prevArticles) =>
       prevArticles.filter((item) => item.id !== article.id)
     );
+    setSavedKeywords((prevKeywords) => {
+      prevKeywords.filter((keyword) => keyword !== article.keyword);
+    });
   };
 
   const handleRegistration = ({ email, password, username }) => {
     registerUser(email, password, username)
-      .then((user) => {
+      .then(() => {
         closeActiveModal();
         setActiveModal("registration-success");
       })

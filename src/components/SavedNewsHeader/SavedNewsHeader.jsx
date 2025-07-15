@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import "./SavedNewsHeader.css";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
@@ -6,6 +6,8 @@ function SavedNewsHeader({ count, savedKeywords }) {
   const { currentUser } = useContext(CurrentUserContext);
 
   const getSavedKeywords = () => {
+    if (!savedKeywords) return;
+
     let str = "";
     if (savedKeywords.length >= 1) {
       str += savedKeywords[0];

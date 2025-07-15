@@ -3,14 +3,14 @@ export const baseUrl =
     ? "https://nomoreparties.co/news/v2/everything"
     : "https://newsapi.org/v2/everything";
 
-export const headers = { "Content-Type" : "application/json" };
+export const headers = { "Content-Type": "application/json" };
 
 function checkResponses(res) {
-    if (res.ok) {
-        return res.json();
-    }
+  if (res.ok) {
+    return res.json();
+  }
 
-    Promise.reject(`Error: ${res.status}`);
+  Promise.reject(`Error: ${res.status}`);
 }
 
 export { checkResponses };
