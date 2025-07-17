@@ -90,10 +90,6 @@ function App() {
     article.keyword = currentKeyword;
     article.isSaved = true;
     setSavedKeywords([...savedKeywords, currentKeyword]);
-
-    // if (!savedKeywords.includes(currentKeyword)) {
-    //   setSavedKeywords([...savedKeywords, currentKeyword]);
-    // }
   };
 
   const handleDeleteArticle = (article) => {
