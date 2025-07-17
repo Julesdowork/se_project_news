@@ -145,6 +145,10 @@
 }
 
 @media screen and (min-width: 600px) and (max-width: 960px) {
+  .news-card {
+    max-height: 420px;
+  }
+
   .news-card__img {
     max-height: 150px;
   }
@@ -180,6 +184,11 @@
 }
 
 @media screen and (max-width: 600px) {
+  .news-card {
+    max-width: 288px;
+    max-height: 440px;
+  }
+
   .news-card__img {
     max-height: 196px;
   }
@@ -190,6 +199,8 @@
 
   .news-card__title {
     margin: 0 0 14px;
+    font-size: 22px;
+    line-height: 1.09;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;

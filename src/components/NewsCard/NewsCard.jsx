@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import "./NewsCard.css";
 import { getDate } from "../../utils/newsApi";
@@ -82,12 +83,12 @@ function NewsCard({
         </span>
       </button>
       <div className="news-card__info">
-        <a href={article.url} className="news-card__link">
+        <Link to={article.url} className="news-card__link" target="_blank">
           <p className="news-card__date">{getDate(article.publishedAt)}</p>
           <h3 className="news-card__title">{article.title}</h3>
           <p className="news-card__description">{article.description}</p>
           <p className="news-card__source">{article.source.name}</p>
-        </a>
+        </Link>
       </div>
     </li>
   );

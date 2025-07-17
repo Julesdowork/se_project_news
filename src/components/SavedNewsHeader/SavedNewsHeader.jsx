@@ -1,25 +1,35 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./SavedNewsHeader.css";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-function SavedNewsHeader({ count, savedKeywords }) {
+function SavedNewsHeader({
+  count,
+  savedKeywords,
+  savedArticles,
+  updateKeywords,
+}) {
   const { currentUser } = useContext(CurrentUserContext);
+  const [keywords, setKeywords] = useState([]);
 
-  const getSavedKeywords = () => {
-    if (!savedKeywords) return;
+  const displayKeywords = () => {
+    if (!keywords) return;
 
     let str = "";
-    if (savedKeywords.length >= 1) {
-      str += savedKeywords[0];
+    if (keywords.length >= 1) {
+      str += keywords[0];
     }
-    if (savedKeywords.length >= 2) {
-      str += `, ${savedKeywords[1]}`;
+    if (keywords.length >= 2) {
+      str += `, ${keywords[1]}`;
     }
-    if (savedKeywords.length > 2) {
-      str += `, and ${savedKeywords.length - 2} others`;
+    if (keywords.length > 2) {
+      str += `, and ${keywords.length - 2} others`;
     }
     return str;
   };
+
+  useEffect(() => {
+    setKeywords(updateKeywords());
+  }, [savedKeywords]);
 
   return (
     <header className="saved-news-header">
@@ -28,7 +38,7 @@ function SavedNewsHeader({ count, savedKeywords }) {
         {`${currentUser.data.username}, you have ${count} saved articles`}
       </h2>
       <p className="saved-news-header__keywords">
-        By keywords: <b>{getSavedKeywords()}</b>
+        By keywords: <b>{displayKeywords()}</b>
       </p>
     </header>
   );

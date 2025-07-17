@@ -89,21 +89,34 @@ function App() {
     setSavedArticles([...savedArticles, article]);
     article.keyword = currentKeyword;
     article.isSaved = true;
+    setSavedKeywords([...savedKeywords, currentKeyword]);
 
-    if (!savedKeywords.includes(currentKeyword)) {
-      setSavedKeywords([...savedKeywords, currentKeyword]);
-    }
+    // if (!savedKeywords.includes(currentKeyword)) {
+    //   setSavedKeywords([...savedKeywords, currentKeyword]);
+    // }
   };
 
   const handleDeleteArticle = (article) => {
     article.isSaved = false;
+    setSavedArticles(savedArticles.filter((item) => item.url !== article.url));
+    removeKeywordFromSaved(article.keyword);
+  };
 
-    setSavedArticles((prevArticles) =>
-      prevArticles.filter((item) => item.id !== article.id)
-    );
-    setSavedKeywords((prevKeywords) => {
-      prevKeywords.filter((keyword) => keyword !== article.keyword);
+  const removeKeywordFromSaved = (keyword) => {
+    const tempArray = [...savedKeywords];
+    const index = tempArray.indexOf(keyword);
+    tempArray.splice(index, 1);
+    setSavedKeywords(tempArray);
+  };
+
+  const updateKeywords = () => {
+    let result = [];
+    savedKeywords.map((keyword) => {
+      if (!result.includes(keyword)) {
+        result.push(keyword);
+      }
     });
+    return result;
   };
 
   const handleRegistration = ({ email, password, username }) => {
@@ -182,6 +195,7 @@ function App() {
                     savedArticles={savedArticles}
                     savedKeywords={savedKeywords}
                     handleDeleteArticle={handleDeleteArticle}
+                    updateKeywords={updateKeywords}
                   />
                 </ProtectedRoute>
               }

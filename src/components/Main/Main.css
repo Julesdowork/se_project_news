@@ -53,6 +53,7 @@
   .main__btn {
     max-width: 240px;
     padding: 16px 0;
+    margin-top: 32px;
   }
 }
 
