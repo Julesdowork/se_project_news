@@ -1,4 +1,12 @@
-import { WEEK_IN_MS } from "./constants";
+import { checkResponses } from "./api";
+import { WEEK_IN_MS, API_KEY } from "./constants";
+
+export const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://nomoreparties.co/news/v2/everything"
+    : "https://newsapi.org/v2/everything";
+
+export const headers = { "Content-Type": "application/json" };
 
 const dateOptions = {
   weekday: undefined,
@@ -6,6 +14,13 @@ const dateOptions = {
   month: "long",
   day: "numeric",
 };
+
+function getNewsArticles(keyword) {
+  const dates = getRelevantDates();
+  return fetch(
+    `${baseUrl}?q=${keyword}&apiKey=${API_KEY}&from=${dates[0]}&to=${dates[1]}`
+  ).then(checkResponses);
+}
 
 export const filterNewsData = (data) => {
   const result = data.articles;
@@ -25,4 +40,4 @@ export const getRelevantDates = () => {
   return dates;
 };
 
-export const apiKey = "8709b00b791c4887ad9aaf636b41d4dc";
+export { getNewsArticles };

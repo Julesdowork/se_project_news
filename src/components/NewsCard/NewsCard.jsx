@@ -19,7 +19,7 @@ function NewsCard({
   const { isLoggedIn } = useContext(CurrentUserContext);
 
   const handleSaveBtnClicked = () => {
-    if (isSaved) return;
+    if (isSaved || !isLoggedIn) return;
 
     setIsSaved(true);
     handleSaveArticle(article);

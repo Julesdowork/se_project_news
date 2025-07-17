@@ -5,7 +5,6 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 function SavedNewsHeader({
   count,
   savedKeywords,
-  savedArticles,
   updateKeywords,
 }) {
   const { currentUser } = useContext(CurrentUserContext);

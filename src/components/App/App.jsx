@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 
-import { filterNewsData, apiKey, getRelevantDates } from "../../utils/newsApi";
-import { checkResponses } from "../../utils/api";
+import { getNewsArticles, filterNewsData } from "../../utils/newsApi";
 import { authorizeUser, registerUser, checkToken } from "../../utils/auth";
 import { getToken, setToken, removeToken } from "../../utils/token";
 
@@ -63,11 +62,7 @@ function App() {
 
   const handleSearchNews = (keyword) => {
     setSearchingState("searching");
-    const dates = getRelevantDates();
-    fetch(
-      `https://newsapi.org/v2/everything?q=${keyword}&apiKey=${apiKey}&from=${dates[0]}&to=${dates[1]}`
-    )
-      .then(checkResponses)
+    getNewsArticles(keyword)
       .then((data) => {
         if (newsArticles.length > 0) {
           setNewsArticles([]);
