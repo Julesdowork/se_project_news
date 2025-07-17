@@ -1,0 +1,29 @@
+.news-card-list {
+  margin: 0 0;
+  padding: 0;
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 16px;
+  overflow: hidden;
+}
+
+.news-card-list_showAll {
+  max-height: none;
+  overflow: visible;
+}
+
+@media screen and (min-width: 600px) and (max-width: 960px) {
+  .news-card-list {
+    gap: 8px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .news-card-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 0 16px;
+  }
+}

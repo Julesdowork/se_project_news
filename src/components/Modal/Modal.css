@@ -1,0 +1,131 @@
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+}
+
+.modal_opened {
+  visibility: visible;
+}
+
+.modal__content {
+  position: relative;
+  padding: 43px 35px;
+  background-color: #fff;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+  max-width: 430px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.modal__heading {
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  color: #1a1b22;
+  max-width: 315px;
+  margin: 0;
+}
+
+.modal__body {
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #000;
+  margin: 14px 0 0;
+}
+
+.modal__link {
+  color: #2f71e5;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal__btn-group {
+  margin: 32px 0 0;
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+}
+
+.modal__btn {
+  background-color: transparent;
+  border: none;
+  padding: 8px 16px;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.33;
+}
+
+.modal__btn_type_confirm {
+  color: #2f71e5;
+}
+
+.modal__btn_type_confirm:hover {
+  color: #6caafc;
+}
+
+.modal__btn_type_deny {
+  color: red;
+}
+
+.modal__btn_type_deny:hover {
+  color: rgb(248, 108, 108);
+}
+
+.modal__close-btn {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  top: -46px;
+  right: -46px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.modal__close-icon {
+  filter: invert(100%) sepia(99%) saturate(2%) hue-rotate(37deg)
+    brightness(108%) contrast(100%);
+  width: 40px;
+  height: 40px;
+}
+
+@media screen and (min-width: 600px) and (max-width: 960px) {
+  .modal__content {
+    padding: 34px 36px 28px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .modal {
+    align-items: stretch;
+    margin-top: 57px;
+    height: 100vh;
+    background-color: transparent;
+  }
+
+  .modal__content {
+    padding: 16px;
+  }
+
+  .modal__close-btn {
+    top: -46px;
+    right: 16px;
+  }
+
+  .modal__close-icon {
+    width: 24px;
+    height: 24px;
+  }
+}
